@@ -27,6 +27,14 @@ class Store:
                 return row
         return None
 
+    def truncate(self, module: str, length: int) -> None:
+        """把某张表截回指定长度：计划板事务回滚时用来撤销本次新增行。"""
+        del self._tables.setdefault(module, [])[length:]
+
+    def replace_rows(self, module: str, rows: list[dict[str, Any]]) -> None:
+        """按条件过滤后整体替换一张表：只用于计划板演算失败的草稿清理。"""
+        self._tables[module] = rows
+
     def overview(self) -> dict[str, object]:
         modules: list[dict[str, object]] = []
         for name in self.module_names():

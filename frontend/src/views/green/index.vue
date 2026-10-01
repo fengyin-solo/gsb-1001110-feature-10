@@ -6,7 +6,7 @@
         <p class="page-desc">维护绿化区域，围绕区域编号、区域名称、植物品种、面积做登记、筛选与状态流转。</p>
       </div>
       <div class="page-actions">
-        <button class="btn primary" type="button" @click="openCreate">登记绿化区域</button>
+        <RouterLink class="btn primary" to="/green_plan">进入修剪灌溉计划板</RouterLink>
         <button class="btn" type="button" @click="exportRows">导出绿化管养清单</button>
       </div>
     </header>
