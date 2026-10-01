@@ -244,3 +244,25 @@ class MaterialEntry(BaseModel):
     field_5: str | None = None  # 进场日期
     field_6: str | None = None  # 存放地点
     field_7: str | None = None  # 材料状态
+
+
+class CaliberAdjustPayload(BaseModel):
+    """物候口径调整入参：高温/暴雨阈值与说明，调整后产生新生效版本。"""
+
+    高温阈值: int
+    暴雨阈值: int
+    创建说明: str | None = None
+
+
+class PublishPayload(BaseModel):
+    """计划发布入参：可指定草稿批次键续发；force_fail 用于演示发布中断回滚。"""
+
+    批次键: str | None = None
+    force_fail: bool = False
+
+
+class CompleteTaskPayload(BaseModel):
+    """现场完成填报：实际完成时间留痕，默认取当天。"""
+
+    实际完成日期: str | None = None
+    完成说明: str | None = None
